@@ -1,13 +1,16 @@
+import { useSignal } from "@preact/signals";
 import type { Signal } from "@preact/signals";
 import { Button } from "../components/Button.tsx";
 
 interface CounterProps {
+  name: string;
   count: Signal<number>;
 }
 
 export default function Counter(props: CounterProps) {
   return (
     <div class="flex gap-8 py-6">
+      <p>{props.name}</p>
       <Button onClick={() => props.count.value -= 1}>-1</Button>
       <p class="text-3xl tabular-nums">{props.count}</p>
       <Button onClick={() => props.count.value += 1}>+1</Button>
